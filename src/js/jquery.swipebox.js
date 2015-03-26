@@ -45,6 +45,10 @@
 						<div id="swipebox-bottom-bar">\
 							<div id="swipebox-arrows">\
 								<a id="swipebox-prev"></a>\
+								<span class="swipebox--indicators">\
+									<span id="swipebox-current-slide"></span> / \
+									<span id="swipebox-all-slides"></span>\
+								</span>\
 								<a id="swipebox-next"></a>\
 							</div>\
 						</div>\
@@ -182,6 +186,8 @@
 				$.each( elements,  function() {
 					$( '#swipebox-slider' ).append( '<div class="slide"></div>' );
 				} );
+
+				$('#swipebox-all-slides').text(elements.length);
 
 				$this.setDim();
 				$this.actions();
@@ -597,6 +603,7 @@
 				var slider = $( '#swipebox-slider' );
 
 				currentX = -index*100;
+				$('#swipebox-current-slide').text(index + 1);
 
 				if ( this.doCssTrans() ) {
 					slider.css( {
